@@ -1,6 +1,39 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
-plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
-rootProject.name = 'Glorep_RN'
-include ':app'
-includeBuild('../node_modules/@react-native/gradle-plugin')
+pluginManagement {
+    includeBuild("../node_modules/@react-native/gradle-plugin")
+
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id("com.facebook.react.settings")
+}
+
+extensions.configure(com.facebook.react.ReactSettingsExtension) {
+    it.autolinkLibrariesFromCommand()
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+
+        maven {
+            url "https://gitlab.mailadmiral.com/api/v4/projects/63/packages/maven"
+            name "GitLab"
+            credentials {
+                username = "gitlab+deploy-token-2" // Use your deploy token username
+                password = "gldt-5QYSbwgA95h1_sGyN7Dn" // Use your deploy token value
+            }
+
+        }
+    }
+}
+
+rootProject.name = "Glorep_RN"
+include(":app")
+includeBuild("../node_modules/@react-native/gradle-plugin")

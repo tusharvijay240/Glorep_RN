@@ -1,8 +1,8 @@
 //
 //  SDKBridge.swift
-//  Glorep_ReactNative
+//  Glorep_RN
 //
-//  Created by Tushar on 11/02/25.
+//  Created by Tushar on 17/02/25.
 //
 
 import Foundation

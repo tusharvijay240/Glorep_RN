@@ -1,13 +1,65 @@
 PODS:
+  - Alamofire (5.10.2)
+  - AlamofireImage (4.3.0):
+    - Alamofire (~> 5.8)
   - boost (1.84.0)
+  - CountryPickerView (3.3.0)
   - DoubleConversion (1.1.6)
   - fast_float (6.1.4)
   - FBLazyVector (0.77.1)
   - fmt (11.0.2)
   - glog (0.3.5)
+  - GloRep-SDK (1.0.1):
+    - Alamofire
+    - AlamofireImage
+    - CountryPickerView
+    - GooglePlaces (~> 7.0)
+    - IQKeyboardManagerSwift
+    - ReachabilitySwift
+  - GooglePlaces (7.4.0)
   - hermes-engine (0.77.1):
     - hermes-engine/Pre-built (= 0.77.1)
   - hermes-engine/Pre-built (0.77.1)
+  - IQKeyboardCore (1.0.5)
+  - IQKeyboardManagerSwift (8.0.0):
+    - IQKeyboardManagerSwift/Appearance (= 8.0.0)
+    - IQKeyboardManagerSwift/Core (= 8.0.0)
+    - IQKeyboardManagerSwift/IQKeyboardReturnManager (= 8.0.0)
+    - IQKeyboardManagerSwift/IQKeyboardToolbarManager (= 8.0.0)
+    - IQKeyboardManagerSwift/IQTextView (= 8.0.0)
+    - IQKeyboardManagerSwift/Resign (= 8.0.0)
+  - IQKeyboardManagerSwift/Appearance (8.0.0):
+    - IQKeyboardManagerSwift/Core
+  - IQKeyboardManagerSwift/Core (8.0.0):
+    - IQKeyboardNotification
+    - IQTextInputViewNotification
+  - IQKeyboardManagerSwift/IQKeyboardReturnManager (8.0.0):
+    - IQKeyboardReturnManager
+  - IQKeyboardManagerSwift/IQKeyboardToolbarManager (8.0.0):
+    - IQKeyboardManagerSwift/Core
+    - IQKeyboardToolbarManager
+  - IQKeyboardManagerSwift/IQTextView (8.0.0):
+    - IQTextView
+  - IQKeyboardManagerSwift/Resign (8.0.0):
+    - IQKeyboardManagerSwift/Core
+  - IQKeyboardNotification (1.0.3)
+  - IQKeyboardReturnManager (1.0.4):
+    - IQKeyboardCore (= 1.0.5)
+  - IQKeyboardToolbar (1.1.1):
+    - IQKeyboardCore
+    - IQKeyboardToolbar/Core (= 1.1.1)
+  - IQKeyboardToolbar/Core (1.1.1):
+    - IQKeyboardCore
+    - IQKeyboardToolbar/Placeholderable
+  - IQKeyboardToolbar/Placeholderable (1.1.1):
+    - IQKeyboardCore
+  - IQKeyboardToolbarManager (1.1.2):
+    - IQKeyboardToolbar
+    - IQTextInputViewNotification
+  - IQTextInputViewNotification (1.0.8):
+    - IQKeyboardCore
+  - IQTextView (1.0.5):
+    - IQKeyboardToolbar/Placeholderable
   - RCT-Folly (2024.11.18.00):
     - boost
     - DoubleConversion
@@ -33,6 +85,7 @@ PODS:
     - FBLazyVector (= 0.77.1)
     - RCTRequired (= 0.77.1)
     - React-Core (= 0.77.1)
+  - ReachabilitySwift (5.2.4)
   - React (0.77.1):
     - React-Core (= 0.77.1)
     - React-Core/DevSupport (= 0.77.1)
@@ -1509,6 +1562,7 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - fmt (from `../node_modules/react-native/third-party-podspecs/fmt.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - GloRep-SDK (from `https://gitlab.mailadmiral.com/glorep/sdk/GloRep-SDK.git`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
@@ -1574,6 +1628,19 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - AlamofireImage
+    - CountryPickerView
+    - GooglePlaces
+    - IQKeyboardCore
+    - IQKeyboardManagerSwift
+    - IQKeyboardNotification
+    - IQKeyboardReturnManager
+    - IQKeyboardToolbar
+    - IQKeyboardToolbarManager
+    - IQTextInputViewNotification
+    - IQTextView
+    - ReachabilitySwift
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -1589,6 +1656,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/fmt.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  GloRep-SDK:
+    :git: https://gitlab.mailadmiral.com/glorep/sdk/GloRep-SDK.git
   hermes-engine:
     :podspec: "../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec"
     :tag: hermes-2024-11-25-RNv0.77.0-d4f25d534ab744866448b36ca3bf3d97c08e638c
@@ -1711,18 +1780,37 @@ EXTERNAL SOURCES:
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
+CHECKOUT OPTIONS:
+  GloRep-SDK:
+    :commit: 676cb91fae68db268783e67f24633d56fc7e00c1
+    :git: https://gitlab.mailadmiral.com/glorep/sdk/GloRep-SDK.git
+
 SPEC CHECKSUMS:
+  Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
+  AlamofireImage: 843953fa97bee5f561cf05d83abd759e590b068d
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
+  CountryPickerView: 6322ada32a80b0cd721b0267282a5c24f406f263
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
   fast_float: 06eeec4fe712a76acc9376682e4808b05ce978b6
   FBLazyVector: 79c4b7ec726447eec5f8593379466bd9fde1aa14
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: eb93e2f488219332457c3c4eafd2738ddc7e80b8
+  GloRep-SDK: 03dab97cbd6da9e893aecb9348be6c5dc8c9fc90
+  GooglePlaces: 544e908d94860bf6f8fc1865b80d2c7eb6b5f937
   hermes-engine: ccc24d29d650ea725d582a9a53d57cd417fbdb53
+  IQKeyboardCore: 28c8bf3bcd8ba5aa1570b318cbc4da94b861711e
+  IQKeyboardManagerSwift: 0c6fbbaa2e60739e48d7cf59f25661471a7a3a65
+  IQKeyboardNotification: d7382c4466c5a5adef92c7452ebf861b36050088
+  IQKeyboardReturnManager: 972be48528ce9e7508ab3ab15ac7efac803f17f5
+  IQKeyboardToolbar: d4bdccfb78324aec2f3920659c77bb89acd33312
+  IQKeyboardToolbarManager: 6f4072ac620c2572d4af8c09f42a801f3e4909f7
+  IQTextInputViewNotification: f5e954d8881fd9808b744e49e024cc0d4bcfe572
+  IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
   RCT-Folly: 36fe2295e44b10d831836cc0d1daec5f8abcf809
   RCTDeprecation: 664055db806cce35c3c1b43c84414dd66e117ae6
   RCTRequired: dc9a83fa1012054f94430d210337ca3a1afe6fc0
   RCTTypeSafety: 031cefa254a1df313a196f105b8fcffdab1c5ab6
+  ReachabilitySwift: 32793e867593cfc1177f5d16491e3a197d2fccda
   React: 8edfc46c315852ec88ea4a29d5e79019af3dc667
   React-callinvoker: 4450b01574dfc7a8f074f7e29e6965ac04859c8f
   React-Core: 13bdd0a0125fdaecdee747b62e02d2a65b026520
@@ -1778,8 +1866,8 @@ SPEC CHECKSUMS:
   ReactCodegen: 8c6710db5ccee603fa0475978465b606abe1ed77
   ReactCommon: 8da6c58517fa560d0fc7a9da83093457303ae9f8
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  Yoga: 2957d0e744897870b5a377f26522e3f08cadd7ac
+  Yoga: 1fd059161b449018342943b095a6d4e69bcaa719
 
-PODFILE CHECKSUM: 0e94434ebed15dbe6d1eea9497492f26994c5349
+PODFILE CHECKSUM: 1e706b30221cb2554a97156f58c46010b91cba03
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

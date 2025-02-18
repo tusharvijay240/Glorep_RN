@@ -5,12 +5,24 @@ buildscript {
         compileSdkVersion = 35
         targetSdkVersion = 34
         ndkVersion = "27.1.12297006"
-        kotlinVersion = "2.0.21"
+        kotlinVersion = "1.9.24"
     }
     repositories {
         google()
         mavenCentral()
+        maven {
+            url "https://gitlab.mailadmiral.com/api/v4/projects/63/packages/maven"
+            name "GitLab"
+            credentials {
+                username = "gitlab+deploy-token-2" // Use your deploy token username
+                password = "gldt-5QYSbwgA95h1_sGyN7Dn" // Use your deploy token value
+            }
+
+        }
+        // Add this if you're using jcenter dependencies
+        // jcenter()
     }
+
     dependencies {
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
